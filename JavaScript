@@ -1,0 +1,33 @@
+document.querySelector('.get-pokemon').addEventListener('click', getPokemon);
+
+function getPokemon() {
+    let pokemon1 = Math.floor(Math.random() * 151) + 1;
+    let pokemon2 = Math.floor(Math.random() * 151) + 1;
+
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon1}`)
+        .then(res => res.json())
+        .then(data => {
+
+
+            document.querySelector('.pokemon1-image').src = data.sprites.front_default;
+            document.querySelector('.pokemon1-name').innerText = data.name;
+            document.querySelector('.pokemon1-attack').innerText = data.stats[1].base_stat;
+        })
+
+    .catch(err => {
+        console.log(`error ${err}`)
+    })
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon2}`)
+        .then(res => res.json())
+        .then(data => {
+
+
+            document.querySelector('.pokemon2-image').src = data.sprites.front_default;
+            document.querySelector('.pokemon2-name').innerText = data.name;
+            document.querySelector('.pokemon2-attack').innerText = data.stats[1].base_stat;
+        })
+
+
+}
