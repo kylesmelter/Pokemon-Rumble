@@ -27,3 +27,87 @@ h1 {
     font-style: bold;
     border-radius: 9%;
 }
+
+
+///////////////////////// VERSION 2 ////////////////////////////
+
+* {
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5rem;
+}
+
+.arena {
+    margin-left: 2%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    height: 250px;
+}
+
+h2, h3 {
+    font-size: 4rem;
+}
+
+h2 {
+    margin-left: 15%;
+}
+
+h3 {
+    margin-left: 10%;
+}
+
+.buttons {
+    flex-direction: column;
+    align-self: center;
+    
+}
+
+.get-pokemon {
+    display: block;
+    padding: 16px 32px;
+    background: red;
+    color: gold;
+    font-style: bold;
+
+}
+
+h4 {
+    text-align: center;
+    font-size: 3rem;
+    margin-left: 2%;  
+}
+
+@media (max-width: 700px) {
+    .arena {
+        flex-direction: column;
+    }
+
+    .pokemon1-section, .pokemon2-section {
+        align-self: center;
+    }
+
+    h2 {
+        margin-left: 15%;
+    }
+
+    h3 {
+        margin-left: 10%;
+    }
+
+    h4 {
+        margin-right:3%;
+    }
+}
