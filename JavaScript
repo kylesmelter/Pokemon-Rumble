@@ -151,3 +151,63 @@ function getPokemon() {
     })
 
 }
+
+////////////////////// VERSION 4 ////////////////////////
+
+document.querySelector('.get-pokemon').addEventListener('click', getPokemon);
+
+
+function getPokemon() {
+    let pokemon1 = Math.floor(Math.random() * 151) + 1;
+    let pokemon2 = Math.floor(Math.random() * 151) + 1;
+
+    
+
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon1}`)
+        .then(res => res.json())
+        .then(data => {
+
+            document.querySelector('.pokemon1-image').src = data.sprites.front_default;
+            document.querySelector('.pokemon1-name').innerText = `${data.name[0].toUpperCase()}` + `${data.name.slice(1)}`
+            document.querySelector('.pokemon1-attack').innerText = `Attack: ${data.stats[1].base_stat}`;
+
+            pokemon1 = data.name;
+
+            attack1 = data.stats[1].base_stat;
+            console.log(attack1);
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon2}`)
+        .then(res => res.json())
+        .then(data => {
+    
+    
+            document.querySelector('.pokemon2-image').src = data.sprites.front_default;
+            document.querySelector('.pokemon2-name').innerText = `${data.name[0].toUpperCase()}` + `${data.name.slice(1)}`;
+            document.querySelector('.pokemon2-attack').innerText = `Attack: ${data.stats[1].base_stat}`;
+
+            pokemon2 = data.name;
+            
+            attack2 = data.stats[1].base_stat;
+            console.log(attack2)
+
+            if(pokemon1 === 'dragonite' || pokemon2 === 'dragonite') {
+                document.querySelector('h4').innerText = 'Dragonite wins because Dragonite is the best Pokémon in the Pokéverse!'
+            } else if(attack1 === attack2) {
+                document.querySelector('h4').innerText = "Both Pokémon are KO'ed!"
+            } else if(attack1 > attack2) {
+                document.querySelector('h4').innerText = `${pokemon1[0].toUpperCase()}` + `${pokemon1.slice(1)} wins!`
+            } else {
+                document.querySelector('h4').innerText = `${pokemon2[0].toUpperCase()}` + `${pokemon2.slice(1)} wins!`
+            }
+
+        })
+
+        
+        })
+
+    .catch(err => {
+        console.log(`error ${err}`)
+    })
+
+}
